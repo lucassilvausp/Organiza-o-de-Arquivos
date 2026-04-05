@@ -117,7 +117,7 @@ void transcrever (FILE *base, FILE *bin, Cabecalho_s *cab){
         Registro_s novoReg; 
         //colocar as informacoes em novoReg        
         lerLinha(linha, &novoReg);
-        novoReg.removido = 0;
+        novoReg.removido = '0';
         novoReg.proximo = -1;
         novoReg.tamNomeEstacao = strlen(novoReg.NomeEstacao);
         novoReg.tamNomeLinha = strlen(novoReg.NomeLinha);

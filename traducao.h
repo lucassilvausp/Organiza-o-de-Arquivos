@@ -4,7 +4,7 @@
 #include "registro.h"
 
 
-
+void escrever (FILE *bin);
 
 
 #endif

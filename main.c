@@ -5,7 +5,7 @@
 #include "registro.h"
 #include "traducao.h"
 
-int main () {
+int main (){
 
     int numFunc;
     
@@ -22,7 +22,7 @@ int main () {
             FILE *file = fopen(nomeArquivo, "r");           
             FILE *bin = fopen(nomeSaida, "wb+");
             if (file == NULL || bin == NULL) {
-                printf("Falha na abertura do arquivo.\n");
+                printf("Falha no processamento do arquivo.\n");
                 return 0;
             }
             Cabecalho_s cab = criarCab();
@@ -39,14 +39,12 @@ int main () {
             free(nomeSaida);
             break;
         case 2:
-            /*char *nomeArquivo = calloc(20, sizeof(char));   //leitura
-            scanf(" %s", nomeArquivo);
-            FILE *bin = fopen(nomeArquivo, "r");
-
-
-
-            fclose(bin);
-            break;*/
+            char *nomeArquivos = calloc(20, sizeof(char));
+            scanf(" %s", nomeArquivos);
+            FILE *bina = fopen(nomeArquivos, "rb");
+            escrever(bina);
+            fclose(bina);
+            break;
         
         case 3:
             /* code */
