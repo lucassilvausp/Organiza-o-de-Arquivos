@@ -1,20 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "fornecidas.c"
-
-typedef struct cabecalho_s{
-    char tipo;
-    int topo;
-    int proxRRN;
-    int nroEstacoes;
-    int nroParesEstacoes;
-};
+#include "registro.h"
+#include "traducao.h"
 
 int main () {
-
-    char *nomeArquivo = calloc(10, sizeof(char));
-    FILE *file = fopen(nomeArquivo, "r");
-    free(nomeArquivo);
 
     int numFunc;
     
@@ -22,11 +13,40 @@ int main () {
 
         switch (numFunc) {
         case 1:
-            /* code */
+            char *nomeArquivo = calloc(20, sizeof(char));   //leitura
+            scanf(" %s", nomeArquivo);
+            char *nomeSaida = calloc(20, sizeof(char));
+            scanf(" %s", nomeSaida);
+
+            //abrindo arquivos
+            FILE *file = fopen(nomeArquivo, "r");           
+            FILE *bin = fopen(nomeSaida, "wb+");
+            if (file == NULL || bin == NULL) {
+                printf("Falha na abertura do arquivo.\n");
+                return 0;
+            }
+            Cabecalho_s cab = criarCab();
+            escreverCab(cab, bin);
+            transcrever(file, bin, &cab);
+            fecharCab(&cab);
+            escreverCab(cab, bin);
+
+            fclose(bin);    //fechando o arquivo
+            fclose(file);   
+
+            free(nomeArquivo);
+            BinarioNaTela(nomeSaida);
+            free(nomeSaida);
             break;
         case 2:
-            /* code */
-            break;
+            /*char *nomeArquivo = calloc(20, sizeof(char));   //leitura
+            scanf(" %s", nomeArquivo);
+            FILE *bin = fopen(nomeArquivo, "r");
+
+
+
+            fclose(bin);
+            break;*/
         
         case 3:
             /* code */
@@ -46,6 +66,5 @@ int main () {
         }
     }
 
-    fclose(file);
     return 0;
 }

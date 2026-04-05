@@ -4,9 +4,40 @@
 
 
 typedef struct registro Registro_s;
+typedef struct cabecalho Cabecalho_s;
 
-//funcoes
-void lerArquivo (FILE* p);
+struct registro {
+    char removido;
+    int proximo;
+    int CodEstacao;
+    int CodLinha;
+    int CodProxEst;
+    int distProxEstacao;
+    int codLinhaIntegra;
+    int codEstIntegra;
+    int tamNomeEstacao;
+    char *NomeEstacao;
+    int tamNomeLinha;
+    char *NomeLinha;
+};
 
+struct cabecalho {
+    char status;
+    int topo;
+    int proxRRN;
+    int nroEstacoes;
+    int nroParesEstacoes;
+};
+
+//      funcoes
+//registro
+Registro_s* lerArquivo (FILE* file, Cabecalho_s cab);
+void transcrever (FILE *base, FILE *bin, Cabecalho_s *cab);
+
+//cabecalho
+Cabecalho_s criarCab ();
+void escreverCab (Cabecalho_s cab, FILE *file);
+void fecharCab (Cabecalho_s *cab);
+void abrirCab (Cabecalho_s *cab);
 
 #endif
