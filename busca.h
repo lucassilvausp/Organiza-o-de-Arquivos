@@ -1,0 +1,13 @@
+#ifndef BUSCA_H
+#define BUSCA_H
+#include <stdio.h>
+
+typedef struct parametros Parametros_s;
+struct parametros{
+    char nome[30];
+    char valor[100];
+};
+
+void busca (FILE *bina);
+
+#endif

@@ -1,8 +1,8 @@
 all: clean
-	gcc -Wall -Werror main.c registro.c traducao.c -o trabalho
+	gcc -Wall -Werror main.c registro.c traducao.c busca.c -o trabalho
 
 zip: all
-	powershell -Command "Compress-Archive -Path main.c, registro.c, registro.h, Makefile, fornecidas.c, traducao.c, traducao.h -DestinationPath entrega.zip -Force"
+	powershell -Command "Compress-Archive -Path main.c, registro.c, registro.h, Makefile, fornecidas.c, traducao.c, traducao.h, busca.c, busca.h -DestinationPath entrega.zip -Force"
 
 clean:
 	rm -f *.o trabalho trabalho.exe entrega.zip

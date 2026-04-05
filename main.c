@@ -4,6 +4,7 @@
 #include "fornecidas.c"
 #include "registro.h"
 #include "traducao.h"
+#include "busca.h"
 
 int main (){
 
@@ -47,7 +48,16 @@ int main (){
             break;
         
         case 3:
-            /* code */
+            char *nomeArquivoss = calloc(20, sizeof(char));
+            scanf(" %s", nomeArquivoss);
+            FILE *binar = fopen(nomeArquivoss, "rb");
+            int n = 0;
+            scanf(" %d", &n);
+            for (int i = 0; i < n; i++){
+                busca(binar);
+                printf("\n");
+            }
+            fclose(binar);
             break;
         
         case 4:
