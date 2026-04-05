@@ -45,6 +45,7 @@ int main (){
             FILE *bina = fopen(nomeArquivos, "rb");
             escrever(bina);
             fclose(bina);
+            free(nomeArquivos);
             break;
         
         case 3:
@@ -58,10 +59,22 @@ int main (){
                 printf("\n");
             }
             fclose(binar);
+            free(nomeArquivoss);
             break;
         
         case 4:
-            /* code */
+            char *nomeArq = calloc(20, sizeof(char));
+            scanf(" %s", nomeArq);
+            FILE *b = fopen(nomeArq, "wb");
+            int n = 0;
+            scanf(" %d", &n);
+            for (int i = 0; i < n; i++){
+
+            }
+
+            fclose(b);
+            BinarioNaTela(nomeArq);
+            free(nomeArq);
             break;
         
         case 5:
